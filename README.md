@@ -13,7 +13,7 @@ This project is a high-performance, cross-platform inventory management solution
 * **Business Logic:** Managing real-time stock levels, user authentication, and transaction history.
 * **Hybrid Data Architecture:** Utilizing both **SQL (PostgreSQL)** for relational integrity and **NoSQL (MongoDB)** for flexible logging and metadata.
 * **Clean Code:** Implementing **SOLID principles** and **Design Patterns** using Java.
-* **Professional Communication:** Technical documentation and codebase maintained in English (C1 level).
+* **Professional Communication:** Technical documentation and codebase maintained in English.
 
 ## Tech Stack
 * **Frontend:** Flutter (Mobile/Web)
