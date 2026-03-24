@@ -1,4 +1,4 @@
-# Smart Inventory & Logistics System 📦
+# Smart Inventory & Logistics System 
 
 ![Status](https://img.shields.io/badge/Status-In--Development-yellow)
 ![License](https://img.shields.io/badge/License-MIT-blue)
