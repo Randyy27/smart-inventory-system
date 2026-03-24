@@ -31,4 +31,5 @@ Thumbs.db
 
 # --- Docker & DB ---
 .env
-**/database/data/
+database/postgres_data/
+database/mongo_data/

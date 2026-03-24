@@ -1,0 +1,39 @@
+services:
+  # Base de Datos Relacional (Para Inventario y Usuarios)
+  db-sql:
+    image: postgres:15-alpine
+    container_name: inventory-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: joan_admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: smart_inventory
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database/postgres_data:/var/lib/postgresql/data
+
+  # Base de Datos NoSQL (Para Logs de movimientos y auditoría)
+  db-nosql:
+    image: mongo:latest
+    container_name: inventory-mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./database/mongo_data:/data/db
+
+  # Interfaz visual
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: inventory-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: joan@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
+    depends_on:
+      - db-sql
