@@ -1,24 +1,34 @@
-# Compiled class file
-*.class
+# --- IDEs and OS ---
+.vscode/
+.idea/
+*.swp
+*.iml
+.DS_Store
+Thumbs.db
 
-# Log file
+# --- Java / Backend ---
+**/target/
+**/build/
+**/*.class
+**/*.jar
+**/*.war
+**/*.ear
 *.log
 
-# BlueJ files
-*.ctxt
+# --- Flutter / Mobile ---
+**/mobile_app/.dart_tool/
+**/mobile_app/.packages
+**/mobile_app/.pub-cache/
+**/mobile_app/.pub/
+**/mobile_app/build/
+**/mobile_app/ios/.generated/
+**/mobile_app/android/.gradle/
+**/mobile_app/android/app/local.properties
+**/mobile_app/android/app/src/main/res/generated/
+**/mobile_app/linux/flutter/ephemeral/
+**/mobile_app/windows/flutter/ephemeral/
+**/mobile_app/macos/Flutter/ephemeral/
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+# --- Docker & DB ---
+.env
+**/database/data/
