@@ -1,0 +1,27 @@
+### Crear un nuevo producto
+POST http://localhost:8081/api/products
+Content-Type: application/json
+
+{
+  "sku": "KB-MECH-RGB01",
+  "name": "Teclado Mecanico RGB",
+  "description": "Teclado con switches de tipo Blue y retroiluminacion dinamica.",
+  "price": 89.99,
+  "category": "Perifericos"
+}
+
+### Obtener todos los productos para verificar
+GET http://localhost:8081/api/products
+
+### Crear un nuevo almacén
+POST http://localhost:8081/api/warehouses
+Content-Type: application/json
+
+{
+  "code": "WH-BCN-01",
+  "name": "Almacen Central Barcelona",
+  "location": "ZAL Port, Barcelona"
+}
+
+### Obtener todos los almacenes
+GET http://localhost:8081/api/warehouses
