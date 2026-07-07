@@ -216,7 +216,8 @@ function App() {
       quantity: parseInt(sQuantity, 10)
     };
 
-    api.post('/stock/update', payload)
+
+    api.post('/stock/set', payload)
       .then(() => {
         setIsStockModalOpen(false);
         fetchStockAndMovements(selectedWarehouseId);
@@ -841,6 +842,191 @@ function App() {
           </div>
         )}
       </main>
+      {/* MODAL DE PRODUCTOS */}
+      {isProductModalOpen && (
+        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-slate-900 border border-slate-800 rounded-xl max-w-md w-full p-6 shadow-2xl">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-bold text-white">
+                {editingProduct ? 'Modificar Producto' : 'Nuevo Producto'}
+              </h3>
+
+              <button
+                onClick={() => setIsProductModalOpen(false)}
+                className="text-slate-400 hover:text-white text-xl cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            {productFormError && (
+              <div className="bg-red-500/10 text-red-400 rounded-lg p-3 text-xs mb-4">
+                {productFormError}
+              </div>
+            )}
+
+            <form
+              onSubmit={handleProductSubmit}
+              className="space-y-4"
+            >
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  SKU
+                </label>
+
+                <input
+                  type="text"
+                  value={pSku}
+                  onChange={(e) => setPSku(e.target.value)}
+                  placeholder="Ej: KB-MECH-RGB01"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  Nombre
+                </label>
+
+                <input
+                  type="text"
+                  value={pName}
+                  onChange={(e) => setPName(e.target.value)}
+                  placeholder="Nombre del producto"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  Precio (€)
+                </label>
+
+                <input
+                  type="number"
+                  step="0.01"
+                  min="0"
+                  value={pPrice}
+                  onChange={(e) => setPPrice(e.target.value)}
+                  placeholder="0.00"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white font-mono focus:outline-none focus:border-emerald-500"
+                  required
+                />
+              </div>
+
+              <div className="flex justify-end gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setIsProductModalOpen(false)}
+                  className="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg text-sm cursor-pointer"
+                >
+                  Cancelar
+                </button>
+
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold rounded-lg text-sm cursor-pointer"
+                >
+                  {editingProduct ? 'Guardar Cambios' : 'Crear Producto'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+      {/* MODAL DE ALMACENES */}
+      {isWarehouseModalOpen && (
+        <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-slate-900 border border-slate-800 rounded-xl max-w-md w-full p-6 shadow-2xl">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-bold text-white">
+                {editingWarehouse ? 'Modificar Almacén' : 'Nuevo Almacén'}
+              </h3>
+
+              <button
+                onClick={() => setIsWarehouseModalOpen(false)}
+                className="text-slate-400 hover:text-white text-xl cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            {warehouseFormError && (
+              <div className="bg-red-500/10 text-red-400 rounded-lg p-3 text-xs mb-4">
+                {warehouseFormError}
+              </div>
+            )}
+
+            <form
+              onSubmit={handleWarehouseSubmit}
+              className="space-y-4"
+            >
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  Código
+                </label>
+
+                <input
+                  type="text"
+                  value={wCode}
+                  onChange={(e) => setWCode(e.target.value)}
+                  placeholder="Ej: XX-XXX-00"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  Nombre
+                </label>
+
+                <input
+                  type="text"
+                  value={wName}
+                  onChange={(e) => setWName(e.target.value)}
+                  placeholder="Nombre del almacén"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                  Ubicación
+                </label>
+
+                <input
+                  type="text"
+                  value={wLocation}
+                  onChange={(e) => setWLocation(e.target.value)}
+                  placeholder="Ciudad o dirección"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500"
+                />
+              </div>
+
+              <div className="flex justify-end gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setIsWarehouseModalOpen(false)}
+                  className="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg text-sm cursor-pointer"
+                >
+                  Cancelar
+                </button>
+
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold rounded-lg text-sm cursor-pointer"
+                >
+                  {editingWarehouse ? 'Guardar Cambios' : 'Crear Almacén'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* MODAL DE AJUSTE DE STOCK */}
       {isStockModalOpen && (
