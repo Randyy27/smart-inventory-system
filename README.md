@@ -23,13 +23,32 @@ Sistema de gestión de inventario profesional diseñado para el control de stock
 - **Arquitectura:** Separación clara entre lógica de negocio, persistencia y vistas.
 
 ## Instalación y Ejecución
-1. Clona el repositorio
-2. docker-compose up -d
-3. Ejecutar el Backend:
-Asegúrate de configurar las variables de entorno para conectar con PostgreSQL (puerto 5432) y lanza la aplicación desde tu IDE o terminal con:
+Sigue estos pasos para poner en marcha el sistema en tu entorno local:
+
+### 1. Clonación del Repositorio
+```bash
+git clone <URL_DEL_REPOSITORIO>
+cd <NOMBRE_DEL_PROYECTO>
+```
+
+### 2. Infraestructura (Docker)
+Levanta la base de datos PostgreSQL utilizando Docker Compose:
+```bash
+docker-compose up -d
+```
+
+### 3. Configuración del Backend
+Asegúrate de que tus variables de entorno estén configuradas para conectar con PostgreSQL (puerto `5432`). Una vez configurado, inicia el servidor:
+```bash
 ./mvnw spring-boot:run
-4. Ejecutar el Frontend:
+```
+
+### 4. Configuración del Frontend
+En una nueva terminal, navega a la carpeta del cliente e inicia la interfaz:
+```bash
 cd frontend
 npm install
 npm run dev
-**El sistema estará disponible en http://localhost:5173.**
+```
+
+> **Nota:** Una vez completados los pasos, podrás acceder al sistema a través de tu navegador en: [http://localhost:5173](https://www.google.com/search?q=http://localhost:5173).
