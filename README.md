@@ -40,6 +40,7 @@ docker-compose up -d
 ### 3. Configuración del Backend
 Asegúrate de que tus variables de entorno estén configuradas para conectar con PostgreSQL (puerto `5432`). Una vez configurado, inicia el servidor:
 ```bash
+cd backend\inventory-backend\
 ./mvnw spring-boot:run
 ```
 
