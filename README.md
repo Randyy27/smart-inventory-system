@@ -24,7 +24,7 @@ Sistema de gestión de inventario profesional diseñado para el control de stock
 
 ## Instalación y Ejecución
 Sigue estos pasos para poner en marcha el sistema en tu entorno local:
-
+( REQUISITOS PREVIOS: docker desktop, git, Java 17, Node.js)
 ### 1. Clonación del Repositorio
 ```bash
 git clone <URL_DEL_REPOSITORIO>
