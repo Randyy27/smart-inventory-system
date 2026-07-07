@@ -44,4 +44,16 @@ public class ProductService {
         }
         productRepository.deleteById(id);
     }
+
+    public Product updateProduct(Long id, Product productDetails) {
+    return productRepository.findById(id)
+            .map(product -> {
+                product.setSku(productDetails.getSku());
+                product.setName(productDetails.getName());
+                product.setPrice(productDetails.getPrice());
+                // Conservar o mapear otros campos si tu modelo los requiere (como description o category)
+                return productRepository.save(product);
+            })
+            .orElseThrow(() -> new IllegalArgumentException("Producto no encontrado con ID: " + id));
+}
 }

@@ -1,5 +1,6 @@
 package com.joansanchez.inventory_backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) // Evita problemas de proxy en la serialización JSON
 public class InventoryStock {
 
     @Id
@@ -24,12 +26,12 @@ public class InventoryStock {
     private Long id;
 
     @NotNull(message = "El producto es obligatorio")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER) // Cambiado a EAGER para asegurar la carga del producto al frontend
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
     @NotNull(message = "El almacén es obligatorio")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER) // Cambiado a EAGER para evitar LazyInitializationException fuera de sesión
     @JoinColumn(name = "warehouse_id", nullable = false)
     private Warehouse warehouse;
 

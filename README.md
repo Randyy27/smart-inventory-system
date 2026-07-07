@@ -1,43 +1,35 @@
 # Smart Inventory & Logistics System 
 
-![Status](https://img.shields.io/badge/Status-In--Development-yellow)
+![Status](https://img.shields.io/badge/Status-Completed-green)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
-## Author
-**Joan Sánchez Ballesteros** *Computer Engineering Student at Universitat Autònoma de Barcelona (UAB) - 3rd Year* [LinkedIn](https://www.linkedin.com/in/tu-perfil) | [GitHub](https://github.com/Randyy27)
+## Autor
+**Joan Sánchez Ballesteros** *Ingeniería Informática - UAB* | [LinkedIn](https://www.linkedin.com/in/joan-sanchez-ballesteros-8024b7368/) | [GitHub](https://github.com/Randyy27)
 
-## Project Overview
-This project is a high-performance, cross-platform inventory management solution designed to handle complex business logistics. It demonstrates a professional approach to software architecture, combining mobile accessibility with a robust, scalable backend.
+## Descripción del Proyecto
+Sistema de gestión de inventario profesional diseñado para el control de stock, auditoría inmutable de movimientos (Kárdex) y simulación de operaciones logísticas. El sistema garantiza la integridad de los datos mediante transacciones robustas y permite la exportación de informes para auditoría.
 
-## Key Objectives
-* **Business Logic:** Managing real-time stock levels, user authentication, and transaction history.
-* **Hybrid Data Architecture:** Utilizing both **SQL (PostgreSQL)** for relational integrity and **NoSQL (MongoDB)** for flexible logging and metadata.
-* **Clean Code:** Implementing **SOLID principles** and **Design Patterns** using Java.
-* **Professional Communication:** Technical documentation and codebase maintained in English.
+## Tecnologías Principales
+* **Backend:** Java 17+, Spring Boot 3.x, Spring Data JPA.
+* **Frontend:** React, Tailwind CSS.
+* **Base de Datos:** PostgreSQL.
+* **Infraestructura:** Docker & Docker Compose.
+* **Formato de datos:** CSV (Exportación de auditoría).
 
-## Tech Stack
-* **Frontend:** Flutter (Mobile/Web)
-* **Backend:** Java (Spring Boot) / Python (Data analysis)
-* **Databases:** PostgreSQL (Relational) & MongoDB (Document-oriented)
-* **DevOps:** Docker & Docker Compose for environment orchestration.
-* **Version Control:** Git using a feature-branch workflow.
+## Características Clave
+- **Transaccionalidad:** Operaciones de stock protegidas con `@Transactional` para evitar descuadres.
+- **Kárdex Inmutable:** Registro histórico detallado de entradas, salidas y ajustes.
+- **Exportación:** Generación automática de informes en formato CSV para Excel.
+- **Arquitectura:** Separación clara entre lógica de negocio, persistencia y vistas.
 
-## Getting Started (Docker)
-*Note: This project is currently under active development.*
-
-To run the infrastructure locally:
-1.  Clone the repository.
-2.  Ensure Docker Desktop is installed and running.
-3.  Run the command:
-    ```bash
-    docker-compose up -d
-    ```
-
-## Roadmap & Progress
-- [x] Initial Docker & Database configuration.
-- [x] Backend API Core (Spring Boot Setup).
-- [x] Basic API Controller (Connection established).
-- [ ] Implement Product Entity and Repository (PostgreSQL/Mongo).
-- [ ] User Authentication & JWT Security.
-- [ ] Flutter UI implementation (State management with Provider/SetState).
-- [ ] Advanced algorithms for stock optimization.
+## Instalación y Ejecución
+1. Clona el repositorio
+2. docker-compose up -d
+3. Ejecutar el Backend:
+Asegúrate de configurar las variables de entorno para conectar con PostgreSQL (puerto 5432) y lanza la aplicación desde tu IDE o terminal con:
+./mvnw spring-boot:run
+4. Ejecutar el Frontend:
+cd frontend
+npm install
+npm run dev
+**El sistema estará disponible en http://localhost:5173.**

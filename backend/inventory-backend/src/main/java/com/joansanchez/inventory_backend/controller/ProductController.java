@@ -51,4 +51,15 @@ public class ProductController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @Valid @RequestBody Product product) {
+        try {
+            // Asumiendo que tu ProductService maneja la lógica de actualizar pasándole el ID y los nuevos datos
+            Product updatedProduct = productService.updateProduct(id, product);
+            return ResponseEntity.ok(updatedProduct);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

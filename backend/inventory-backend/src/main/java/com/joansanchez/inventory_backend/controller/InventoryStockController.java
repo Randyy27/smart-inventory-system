@@ -21,7 +21,7 @@ public class InventoryStockController {
 
     @GetMapping("/warehouse/{warehouseId}")
     public ResponseEntity<List<InventoryStock>> getStockByWarehouse(@PathVariable Long warehouseId) {
-        return ResponseEntity.ok(stockService.getStockByWarehouse(warehouseId));
+        return ResponseEntity.ok(stockService.getStockByWarehouseId(warehouseId));
     }
 
     @PostMapping("/update")
